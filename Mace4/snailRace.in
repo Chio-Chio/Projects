@@ -1,0 +1,66 @@
+% https://www.braingle.com/brainteasers/50710/snail-races.html
+%People have gathered from around the world to witness the 2015 snail races.
+%Each snail was handpicked by its country to race its way across 
+%the brutal 10cm track. Try to figure out the finishing time, 
+%country of origin, and shell color for each of the five snails. 
+%Don't be discouraged if it takes a while to solve, 
+%this is a snail race after all.
+
+%1. Of Todd and the snail with the teal shell, 
+%one finished in 24 minutes and the other is from Mexico.
+
+%2. The snail from Mexico finished 3 minutes after 
+%the snail with the lime shell, who finished 1 minute before 
+%the snail with the silver shell (who wasn't Hank).
+
+%3. The snail from USA finished 2 minutes before Kipp, 
+%who finished some time before the snail from Spain.
+
+%4. Of Ralph and the Spain contestant one had the fastest time and the other had the violet shell.
+
+%5. The snail from Canada was either the one with the teal shell or the one who finished in 25 minutes.
+
+%answer:
+%Hank, 26, Spain, violet
+%Mike, 23, China, silver
+%Kipp, 24, Canada, teal
+%Ralph, 22, USA, lime
+%Todd, 25, Mexico, grey
+
+assign ( domain_size ,5).
+assign ( max_models , -1).
+set(arithmetic).
+
+list (distinct).
+	[Hank, Mike, Kipp, Ralph, Todd].
+	[Spain, China, Canada, USA, Mexico].
+	[Violet, Silver, Teal, Lime, Grey].
+	[T22, T23, T24, T25, T26].
+end_of_list.
+
+formulas(snailRace).
+	%color(x) = y & color(z) = y -> x = z.
+	T22 = 0. 
+	T23 = 1.
+	T24 = 2.
+	T25 = 3.
+	T26 = 4.
+	
+% hint 1. 
+	(Todd = T24 & Teal = Mexico) | (Todd = Mexico & Teal = T24).
+	
+% hint 2.
+	Hank != Silver.
+	Lime + 3 = Mexico.
+    Lime + 1 = Silver.
+
+% hint 3.
+	USA + 2 = Kipp.
+	Kipp < Spain.
+	
+% hint 4.
+	(Ralph = T22 & Spain = Violet) | (Spain = T22 & Ralph = Violet).
+	
+% hint 5.
+	Canada = Teal | Canada = T25.
+end_of_list.

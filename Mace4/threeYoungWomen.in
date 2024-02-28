@@ -1,0 +1,36 @@
+%There are three young newly married women, 
+%and each has a daughter. 
+%Determine whose daughter is whose, and how old each child is.
+%Women: Sara, Katherine, and Mallory
+%Daughters: Abby, Jessica, and Eliana
+%Ages: 4, 5, and 6
+
+%Clues:
+%1. Sara and her daughter have lunch once a week with Katherine and her daughter Eliana (who is 5).
+%2. Jessica's mother doesn't like talking to Sara and her husband.
+%3. Sara's daughter is 6.
+
+assign ( domain_size ,3 ). % 0 is age4, 1 is age 5, 2 is age 6
+assign ( max_models , -1).
+set(arithmetic).
+
+
+list (distinct).
+	[Abby, Jessica, Eliana].
+	[ Sara, Katherine, Mallory].
+end_of_list.
+
+formulas(three).
+	daughter(x) = y & daughter(z) = y -> x = z.
+	
+	daughter(0) < daughter (1).
+	daughter(1) < daughter(2).
+	
+	daughter(Katherine) = Eliana.
+	Eliana = 1.
+	
+	daughter(Sara) !=  Jessica.
+	
+	daughter(Sara) = 2.
+	
+end_of_list.

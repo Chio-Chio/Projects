@@ -1,0 +1,36 @@
+%Three people met at a corner of a street. 
+%They all are dressed like cops, so they 
+%don't know who's the thief (bad guy). 
+%The cops will tell the truth (because they are good), 
+%and the thief will tell the truth too to 
+%make himself appear like a good cop. 
+%They are A, B and C. And they say this:
+
+%A:"C's not the thief."
+%B:"One of you both is the thief!"
+%C:"I'm not the thief."
+
+%Using this information, find out who the thief is.
+
+%Answer
+%A's the thief. He says C's not the thief, 
+%and B says one of the other two is, 
+%which means he must not be. So the only one left is A.
+
+assign ( domain_size ,2 ).
+assign ( max_models , -1).
+
+formulas ( cops_thief ).
+	all x ( human(x) -> cop(x) | thief(x ) ).
+	all x ((cop(x) -> -thief(x )) & ( thief(x) -> -cop(x ))).
+	cop (x) -> m( x ). 
+	thief (x) -> m(x).
+end_of_list.
+
+formulas(puzzle).
+	human(a) & human (b) & human(c).
+	m(a) <-> -thief(c).
+	m(b) <-> thief(a) | thief(c).
+	m(c) <-> -thief(c).
+	
+end_of_list.

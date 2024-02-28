@@ -1,0 +1,36 @@
+% problem: 
+% James is taller than Kate and Carly. 
+%Sammy is shorter than Kate. 
+%Natalie is shorter than Kate and Sammy, 
+%however Sammy is shorter than Carly. 
+%Who is the shortest?
+
+assign(max_models, -1). %all possible models % assign(max_models,1). -> one model
+assign(domain_size,5).
+%taller(x, y) -> x is taller than y
+%shorter(x, y) -> x is shorter than y
+
+list (distinct ).
+ [ James, Kate, Sammy, Natalie, Carly].
+end_of_list.
+
+formulas(taller).
+	shorter(x, y) <-> taller(y, x).
+	-shorter(x,x).
+	-taller(x,x).
+	taller(x, y) -> -shorter(x, y).
+	shorter(x, y)-> -taller(x, y).
+	
+	taller(x ,y) & shorter(z, y) -> taller(x, z).
+	
+	taller(James, Kate).
+	taller(James, Carly).
+	shorter(Sammy, Kate).
+	shorter(Natalie, Kate).
+	shorter(Natalie, Sammy).
+	shorter(Sammy, Carly).
+	
+	% exists x taller(Natalie, x).
+	
+	
+end_of_list.
