@@ -1,0 +1,7 @@
+from .test_unit_models import TestCustomerModel, TestProductsModel, TestOrderModel, TestCategoryModel
+from .test_unit_views import TestIndexView, TestSignupView, TestLoginView
+from .test_unit_templatetags import TestTemplateFilters
+from .test_integration_models import TestOrderIntegration
+from .test_integration_views import TestSignupViewIntegration, TestLoginViewIntegration, TestOrderViewIntegration, TestCartIntegration
+from .test_unit_templates import TestLoginTemplate, TestSignupTemplate
+from .test_selenium import TestSeleniumSignupView, TestSeleniumLoginView
