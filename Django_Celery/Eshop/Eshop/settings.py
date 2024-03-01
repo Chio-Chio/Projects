@@ -19,13 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7'
-
+SECRET_KEY = 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '1a26-46-97-169-109.ngrok-free.app ', 'localhost']
-CSRF_TRUSTED_ORIGINS = [ 'http://127.0.0.1:8000/', 'https://1a26-46-97-169-109.ngrok-free.app']
+ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = []
 
 
 # Application definition
@@ -167,9 +166,9 @@ LOGOUT_REDIRECT_URL = 'login'
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'biancaprojectse2023@gmail.com'
-EMAIL_HOST_PASSWORD = 'dxjjcdnpwsxeyvzn'
-DEFAULT_FROM_EMAIL = 'Celery <biancaprojectse2023@gmail.com>'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
